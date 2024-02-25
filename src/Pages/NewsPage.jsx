@@ -12,7 +12,7 @@ import {
   TelegramShareButton,
   TelegramIcon,
 } from "react-share";
-import { frontendUrl } from "..";
+
 import Loader from "../Components/Loader"
 
 const NewsPage = () => {
@@ -83,16 +83,20 @@ const NewsPage = () => {
               <p>
                 <strong>Share on</strong>
               </p>
-              <FacebookShareButton title={newsData.title} url={`${frontendUrl}/${newsData._id}`}>
+              <FacebookShareButton title={newsData.title} url={`${process.env.FRONTEND_URL
+}/${newsData._id}`}>
                 <FacebookIcon size={34} round={true}></FacebookIcon>
               </FacebookShareButton>
-              <WhatsappShareButton title={newsData.title} url={`${frontendUrl}/${newsData._id}`}>
+              <WhatsappShareButton title={newsData.title} url={`${process.env.FRONTEND_URL
+}/${newsData._id}`}>
                 <WhatsappIcon size={34} round={true}></WhatsappIcon>
               </WhatsappShareButton>
-              <TwitterShareButton title={newsData.title} url={`${frontendUrl}/${newsData._id}`}>
+              <TwitterShareButton title={newsData.title} url={`${process.env.FRONTEND_URL
+}/${newsData._id}`}>
                 <TwitterIcon size={34} round={true}></TwitterIcon>
               </TwitterShareButton>
-              <TelegramShareButton title={newsData.title} url={`${frontendUrl}/${newsData._id}`}>
+              <TelegramShareButton title={newsData.title} url={`${process.env.FRONTEND_URL
+}/${newsData._id}`}>
                 <TelegramIcon size={34} round={true}></TelegramIcon>
               </TelegramShareButton>
             </div>
