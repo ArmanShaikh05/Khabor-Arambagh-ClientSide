@@ -1,0 +1,104 @@
+import React from "react";
+import { useParams } from "react-router-dom";
+
+import axios from "axios";
+import { useEffect } from "react";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappIcon,
+  WhatsappShareButton,
+  TelegramShareButton,
+  TelegramIcon,
+} from "react-share";
+import { format } from "date-fns";
+import { useState } from "react";
+import Loader from "../Loader";
+import { pdfjs } from "react-pdf";
+import PdfComp from "../PdfComp";
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.js",
+  import.meta.url
+).toString();
+
+const SinglePaper = () => {
+  const { id } = useParams();
+  const [newspaper, setNewsPaper] = useState([]);
+  const [loader, setLoader] = useState(true);
+  const [pdfFile, setPdfFile] = useState(null);
+
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    fetchNewspaper();
+    setLoader(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
+  const fetchNewspaper = async () => {
+    const response = await axios.get(`${process.env.SERVER
+}/newspaper/${id}`);
+    if (response) {
+      setNewsPaper(response.data);
+      setPdfFile(`${process.env.SERVER
+}/${response.data.newspaper}`);
+    }
+  };
+
+  return loader ? (
+    <Loader />
+  ) : (
+    <div className="content-wrapper ">
+      <div className="single-newspaper-container">
+        <div className="main-newspaper-content">
+          <h1 className="news-title newspaper-title">{newspaper?.title}</h1>
+
+          <div className="update-and-share">
+            <p>
+              <strong>Published On : </strong>
+              {newspaper.createdAt
+                ? `${format(newspaper.createdAt, "d MMM, yyyy h:mm aaaa")}`
+                : "N/A"}
+            </p>
+
+            <div className="share-options">
+              <p>
+                <strong>Share on</strong>
+              </p>
+              <FacebookShareButton title={newspaper.title}  url={`${process.env.FRONTEND_URL
+}/${newspaper._id}`}
+>
+                <FacebookIcon size={34} round={true}></FacebookIcon>
+              </FacebookShareButton>
+              <WhatsappShareButton title={newspaper.title}  url={`${process.env.FRONTEND_URL
+}/${newspaper._id}`}
+>
+                <WhatsappIcon size={34} round={true}></WhatsappIcon>
+              </WhatsappShareButton>
+              <TwitterShareButton title={newspaper.title}  url={`${process.env.FRONTEND_URL
+}/${newspaper._id}`}
+>
+                <TwitterIcon size={34} round={true}></TwitterIcon>
+              </TwitterShareButton>
+              <TelegramShareButton title={newspaper.title}  url={`${process.env.FRONTEND_URL
+}/${newspaper._id}`}
+>
+                <TelegramIcon size={34} round={true}></TelegramIcon>
+              </TelegramShareButton>
+            </div>
+          </div>
+
+          <div className="pdf-section">
+              <PdfComp pdfFile={pdfFile} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SinglePaper;
