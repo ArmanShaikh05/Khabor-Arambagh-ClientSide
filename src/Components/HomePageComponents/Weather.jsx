@@ -5,7 +5,7 @@ import {toast} from "react-hot-toast"
 
 const Weather = () => {
   const API = "038f9ce323ec4cd9a7375638233112";
-  const BASE_URL = "http://api.weatherapi.com/v1";
+  const BASE_URL = "https://api.weatherapi.com/v1";
 
   const navigate = useNavigate()
 
