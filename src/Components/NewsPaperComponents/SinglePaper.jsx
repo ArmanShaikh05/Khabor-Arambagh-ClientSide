@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import axios from "axios";
 import { useEffect } from "react";
@@ -18,6 +18,7 @@ import { useState } from "react";
 import Loader from "../Loader";
 import { pdfjs } from "react-pdf";
 import PdfComp from "../PdfComp";
+import toast from "react-hot-toast"
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",
@@ -29,8 +30,7 @@ const SinglePaper = () => {
   const [newspaper, setNewsPaper] = useState([]);
   const [loader, setLoader] = useState(true);
   const [pdfFile, setPdfFile] = useState(null);
-
-
+  const navigate = useNavigate()
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,13 +40,18 @@ const SinglePaper = () => {
   }, [id]);
 
   const fetchNewspaper = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_SERVER
-}/newspaper/${id}`);
-    if (response) {
-      setNewsPaper(response.data);
-      setPdfFile(`${process.env.REACT_APP_SERVER
-}/${response.data.newspaper}`);
-    }
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_SERVER}/newspaper/${id}`
+        );
+        if (response) {
+          setNewsPaper(response.data);
+          setPdfFile(`${process.env.REACT_APP_SERVER}/${response.data.newspaper}`);
+        }
+      } catch (error) {
+        navigate('/error')
+        toast.error(error.message)
+      }
   };
 
   return loader ? (
@@ -69,31 +74,35 @@ const SinglePaper = () => {
               <p>
                 <strong>Share on</strong>
               </p>
-              <FacebookShareButton title={newspaper.title}  url={`${process.env.REACT_APP_FRONTEND_URL
-}/${newspaper._id}`}
->
+              <FacebookShareButton
+                title={newspaper.title}
+                url={`${process.env.REACT_APP_FRONTEND_URL}/${newspaper._id}`}
+              >
                 <FacebookIcon size={34} round={true}></FacebookIcon>
               </FacebookShareButton>
-              <WhatsappShareButton title={newspaper.title}  url={`${process.env.REACT_APP_FRONTEND_URL
-}/${newspaper._id}`}
->
+              <WhatsappShareButton
+                title={newspaper.title}
+                url={`${process.env.REACT_APP_FRONTEND_URL}/${newspaper._id}`}
+              >
                 <WhatsappIcon size={34} round={true}></WhatsappIcon>
               </WhatsappShareButton>
-              <TwitterShareButton title={newspaper.title}  url={`${process.env.REACT_APP_FRONTEND_URL
-}/${newspaper._id}`}
->
+              <TwitterShareButton
+                title={newspaper.title}
+                url={`${process.env.REACT_APP_FRONTEND_URL}/${newspaper._id}`}
+              >
                 <TwitterIcon size={34} round={true}></TwitterIcon>
               </TwitterShareButton>
-              <TelegramShareButton title={newspaper.title}  url={`${process.env.REACT_APP_FRONTEND_URL
-}/${newspaper._id}`}
->
+              <TelegramShareButton
+                title={newspaper.title}
+                url={`${process.env.REACT_APP_FRONTEND_URL}/${newspaper._id}`}
+              >
                 <TelegramIcon size={34} round={true}></TelegramIcon>
               </TelegramShareButton>
             </div>
           </div>
 
           <div className="pdf-section">
-              <PdfComp pdfFile={pdfFile} />
+            <PdfComp pdfFile={pdfFile} />
           </div>
         </div>
       </div>
