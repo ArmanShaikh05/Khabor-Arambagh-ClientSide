@@ -16,7 +16,7 @@ const LocalNews = () => {
   }, []);
 
   const fetchHeadlines = async () => {
-    const allData = await axios.get(`${process.env.SERVER}/news?limit=10`);
+    const allData = await axios.get(`${process.env.REACT_APP_SERVER}/news?limit=10`);
     if (allData) {
       setHeadlines(allData.data);
     }
@@ -174,7 +174,7 @@ const LocalNews = () => {
               >
                 <img
                   className="right-newsImage"
-                  src={`${process.env.SERVER}/${item.image}`}
+                  src={`${process.env.REACT_APP_SERVER}/${item.image}`}
                   alt=""
                 />
                 <div className="news-data">

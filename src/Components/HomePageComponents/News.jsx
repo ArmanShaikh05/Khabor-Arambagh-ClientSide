@@ -14,13 +14,15 @@ const News = () => {
 
   async function fetchNews() {
     try {
-      const data = await axios.get(`${process.env.SERVER}/news?limit=20`);
+      const data = await axios.get(`${process.env.REACT_APP_SERVER}/news?limit=20`);
       setNewsArray(data.data);
     } catch (error) {
       navigate("/error");
       toast.error(error.message);
     }
   }
+
+
 
   const handleClick = (e, id) => {
     e.preventDefault();
@@ -40,7 +42,7 @@ const News = () => {
             >
               <img
                 className="box-img"
-                src={`${process.env.SERVER}/${item.image}`}
+                src={`${process.env.REACT_APP_SERVER}/${item.image}`}
                 alt=""
               ></img>
               <div className="box-title">{item.title} </div>

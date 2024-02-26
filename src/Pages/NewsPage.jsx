@@ -36,7 +36,7 @@ const NewsPage = () => {
   }, [id]);
 
   const fetchNewsData = async () => {
-    const data = await axios.get(`${process.env.SERVER
+    const data = await axios.get(`${process.env.REACT_APP_SERVER
 
 }/news/${id}`);
     if (data) {
@@ -48,7 +48,7 @@ const NewsPage = () => {
   };
 
   const fecthAllNews = async () => {
-    const allData = await axios.get(`${process.env.SERVER
+    const allData = await axios.get(`${process.env.REACT_APP_SERVER
 
 }/news?limit=10`);
     if (allData) {
@@ -58,7 +58,7 @@ const NewsPage = () => {
 
 
   const fetchCategoryNews = async () => {
-    const catData = await axios.get(`${process.env.SERVER
+    const catData = await axios.get(`${process.env.REACT_APP_SERVER
 
 }/news/category?category=${newsData.category? newsData.category?.[0] : "india"}&limit=4`)
     if(catData){
@@ -83,19 +83,19 @@ const NewsPage = () => {
               <p>
                 <strong>Share on</strong>
               </p>
-              <FacebookShareButton title={newsData.title} url={`${process.env.FRONTEND_URL
+              <FacebookShareButton title={newsData.title} url={`${process.env.REACT_APP_FRONTEND_URL
 }/${newsData._id}`}>
                 <FacebookIcon size={34} round={true}></FacebookIcon>
               </FacebookShareButton>
-              <WhatsappShareButton title={newsData.title} url={`${process.env.FRONTEND_URL
+              <WhatsappShareButton title={newsData.title} url={`${process.env.REACT_APP_FRONTEND_URL
 }/${newsData._id}`}>
                 <WhatsappIcon size={34} round={true}></WhatsappIcon>
               </WhatsappShareButton>
-              <TwitterShareButton title={newsData.title} url={`${process.env.FRONTEND_URL
+              <TwitterShareButton title={newsData.title} url={`${process.env.REACT_APP_FRONTEND_URL
 }/${newsData._id}`}>
                 <TwitterIcon size={34} round={true}></TwitterIcon>
               </TwitterShareButton>
-              <TelegramShareButton title={newsData.title} url={`${process.env.FRONTEND_URL
+              <TelegramShareButton title={newsData.title} url={`${process.env.REACT_APP_FRONTEND_URL
 }/${newsData._id}`}>
                 <TelegramIcon size={34} round={true}></TelegramIcon>
               </TelegramShareButton>
@@ -104,7 +104,7 @@ const NewsPage = () => {
 
           <img
             className="newsImage"
-            src={`${process.env.SERVER
+            src={`${process.env.REACT_APP_SERVER
 
 }/${newsData.image}`}
             alt=""
@@ -194,7 +194,7 @@ const NewsPage = () => {
               >
                 <img
                   className="right-newsImage"
-                  src={`${process.env.SERVER
+                  src={`${process.env.REACT_APP_SERVER
 
 }/${item.image}`}
                   alt=""

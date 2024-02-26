@@ -28,7 +28,7 @@ const LocalGaming = () => {
 
   const fetchLocalNews = async () => {
     const localdata = await axios.get(
-      `${process.env.SERVER}/news?category=gaming`
+      `${process.env.REACT_APP_SERVER}/news?category=gaming`
     );
     if (localdata) {
       setLocalNews(localdata.data);
@@ -46,7 +46,7 @@ const LocalGaming = () => {
       >
         <p className="card-title">{item.title}</p>
         <img
-          src={`${process.env.SERVER}/${item.image}`}
+          src={`${process.env.REACT_APP_SERVER}/${item.image}`}
           alt=""
           className="card-image"
         />
@@ -66,28 +66,28 @@ const LocalGaming = () => {
             </p>
             <FacebookShareButton
               title={item.title}
-              url={`${process.env.FRONTEND_URL
+              url={`${process.env.REACT_APP_FRONTEND_URL
 }/${item._id}`}
             >
               <FacebookIcon size={28} round={true}></FacebookIcon>
             </FacebookShareButton>
             <WhatsappShareButton
               title={item.title}
-              url={`${process.env.FRONTEND_URL
+              url={`${process.env.REACT_APP_FRONTEND_URL
 }/${item._id}`}
             >
               <WhatsappIcon size={28} round={true}></WhatsappIcon>
             </WhatsappShareButton>
             <TwitterShareButton
               title={item.title}
-              url={`${process.env.FRONTEND_URL
+              url={`${process.env.REACT_APP_FRONTEND_URL
 }/${item._id}`}
             >
               <TwitterIcon size={28} round={true}></TwitterIcon>
             </TwitterShareButton>
             <TelegramShareButton
               title={item.title}
-              url={`${process.env.FRONTEND_URL
+              url={`${process.env.REACT_APP_FRONTEND_URL
 }/${item._id}`}
             >
               <TelegramIcon size={28} round={true}></TelegramIcon>

@@ -16,7 +16,7 @@ const TrendingNews = () => {
   
     async function fetchNews(query) {
       try {
-        const data = await axios.get(`${process.env.SERVER
+        const data = await axios.get(`${process.env.REACT_APP_SERVER
 }/news?category=${query}&section=Local News&limit=20`)
         setNewsArray(data.data)
         
@@ -40,7 +40,7 @@ const TrendingNews = () => {
             {newsArray?.map((item,index)=>(
                 item.image ? 
                 <div key={index} onClick={(e)=>handleClick(e,item._id)} className="box">
-                    <img className="box-img" src={`${process.env.SERVER
+                    <img className="box-img" src={`${process.env.REACT_APP_SERVER
 }/${item.image}`} alt=""></img>
                     <div className="box-title">{item.title} </div>
                     <div className="box-desc"> {item.summary}</div>

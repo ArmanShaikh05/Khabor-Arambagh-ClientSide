@@ -40,11 +40,11 @@ const SinglePaper = () => {
   }, [id]);
 
   const fetchNewspaper = async () => {
-    const response = await axios.get(`${process.env.SERVER
+    const response = await axios.get(`${process.env.REACT_APP_SERVER
 }/newspaper/${id}`);
     if (response) {
       setNewsPaper(response.data);
-      setPdfFile(`${process.env.SERVER
+      setPdfFile(`${process.env.REACT_APP_SERVER
 }/${response.data.newspaper}`);
     }
   };
@@ -69,22 +69,22 @@ const SinglePaper = () => {
               <p>
                 <strong>Share on</strong>
               </p>
-              <FacebookShareButton title={newspaper.title}  url={`${process.env.FRONTEND_URL
+              <FacebookShareButton title={newspaper.title}  url={`${process.env.REACT_APP_FRONTEND_URL
 }/${newspaper._id}`}
 >
                 <FacebookIcon size={34} round={true}></FacebookIcon>
               </FacebookShareButton>
-              <WhatsappShareButton title={newspaper.title}  url={`${process.env.FRONTEND_URL
+              <WhatsappShareButton title={newspaper.title}  url={`${process.env.REACT_APP_FRONTEND_URL
 }/${newspaper._id}`}
 >
                 <WhatsappIcon size={34} round={true}></WhatsappIcon>
               </WhatsappShareButton>
-              <TwitterShareButton title={newspaper.title}  url={`${process.env.FRONTEND_URL
+              <TwitterShareButton title={newspaper.title}  url={`${process.env.REACT_APP_FRONTEND_URL
 }/${newspaper._id}`}
 >
                 <TwitterIcon size={34} round={true}></TwitterIcon>
               </TwitterShareButton>
-              <TelegramShareButton title={newspaper.title}  url={`${process.env.FRONTEND_URL
+              <TelegramShareButton title={newspaper.title}  url={`${process.env.REACT_APP_FRONTEND_URL
 }/${newspaper._id}`}
 >
                 <TelegramIcon size={34} round={true}></TelegramIcon>

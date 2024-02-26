@@ -16,7 +16,7 @@ const SearchNews = () => {
   async function fetchNews() {
     try {
       const data = await axios.get(
-        `${process.env.SERVER}/news?search=${search}`
+        `${process.env.REACT_APP_SERVER}/news?search=${search}`
       );
       if (data) {
         setNewsArray(data.data);
@@ -69,7 +69,7 @@ const SearchNews = () => {
             >
               <img
                 className="box-img"
-                src={`${process.env.SERVER}/${item.image}`}
+                src={`${process.env.REACT_APP_SERVER}/${item.image}`}
                 alt={item.title}
               ></img>
               <div className="box-title">{item.title} </div>

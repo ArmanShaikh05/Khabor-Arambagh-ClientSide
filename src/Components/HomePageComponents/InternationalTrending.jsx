@@ -14,7 +14,7 @@ const InternationalTrending = () => {
   async function fetchNews(query) {
     try {
       const data = await axios.get(
-        `${process.env.SERVER
+        `${process.env.REACT_APP_SERVER
 }/news?category=${query}&section=International News&limit=20`
       );
       setNewsArray(data.data);
@@ -44,7 +44,7 @@ const InternationalTrending = () => {
             >
               <img
                 className="box-img"
-                src={`${process.env.SERVER
+                src={`${process.env.REACT_APP_SERVER
 }/${item.image}`}
                 alt=""
               ></img>

@@ -17,7 +17,7 @@ const WorldNewsPage = () => {
   }, []);
 
   const fetchHeadlines = async () => {
-    const allData = await axios.get(`${process.env.SERVER
+    const allData = await axios.get(`${process.env.REACT_APP_SERVER
 }/news?limit=10`);
     if (allData) {
       setHeadlines(allData.data);
@@ -122,7 +122,7 @@ const WorldNewsPage = () => {
               >
                 <img
                   className="right-newsImage"
-                  src={`${process.env.SERVER
+                  src={`${process.env.REACT_APP_SERVER
 }/${item.image}`}
                   alt=""
                 />

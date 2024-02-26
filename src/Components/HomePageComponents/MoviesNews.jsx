@@ -14,7 +14,7 @@ const MoviesNews = () => {
   async function fetchNews(query) {
     try {
       const data = await axios.get(
-        `${process.env.SERVER}/news/category?category=${query}&limit=20`
+        `${process.env.REACT_APP_SERVER}/news/category?category=${query}&limit=20`
       );
       setNewsArray(data.data);
     } catch (error) {
@@ -43,7 +43,7 @@ const MoviesNews = () => {
             >
               <img
                 className="box-img"
-                src={`${process.env.SERVER}/${item.image}`}
+                src={`${process.env.REACT_APP_SERVER}/${item.image}`}
                 alt=""
               ></img>
               <div className="box-title">{item.title} </div>
