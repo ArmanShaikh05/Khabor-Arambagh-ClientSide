@@ -13,102 +13,109 @@ import {
   TelegramIcon,
 } from "react-share";
 
-import Loader from "../Components/Loader"
+import Loader from "../Components/Loader";
 
 const NewsPage = () => {
   const { id } = useParams();
   const [newsData, setNewsData] = useState([]);
   const [allNewsData, setAllNewsData] = useState([]);
   const [cat, setCat] = useState(["india"]);
-  const [catNewsData , setCatNewsData] = useState([])
-  const [updatedAt, setUpdatedAt] = useState("")
-  const [createdAt, setCreatedAt] = useState("")
+  const [catNewsData, setCatNewsData] = useState([]);
+  const [updatedAt, setUpdatedAt] = useState("");
+  const [createdAt, setCreatedAt] = useState("");
   const navigate = useNavigate();
-  const [loader,setLoader] = useState(true)
+  const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchNewsData();
     fecthAllNews();
     fetchCategoryNews();
-    setLoader(false)
+    setLoader(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const fetchNewsData = async () => {
-    const data = await axios.get(`${process.env.REACT_APP_SERVER
-
-}/news/${id}`);
+    const data = await axios.get(`${process.env.REACT_APP_SERVER}/news/${id}`);
     if (data) {
       setNewsData(data.data);
       setCat(data.data.category);
-      setUpdatedAt(data.data.updatedAt)
-      setCreatedAt(data.data.createdAt)
+      setUpdatedAt(data.data.updatedAt);
+      setCreatedAt(data.data.createdAt);
     }
   };
 
   const fecthAllNews = async () => {
-    const allData = await axios.get(`${process.env.REACT_APP_SERVER
-
-}/news?limit=10`);
+    const allData = await axios.get(
+      `${process.env.REACT_APP_SERVER}/news?limit=10`
+    );
     if (allData) {
       setAllNewsData(allData.data);
     }
   };
 
-
   const fetchCategoryNews = async () => {
-    const catData = await axios.get(`${process.env.REACT_APP_SERVER
-
-}/news/category?category=${newsData.category? newsData.category?.[0] : "india"}&limit=4`)
-    if(catData){
-      setCatNewsData(catData.data)
+    const catData = await axios.get(
+      `${process.env.REACT_APP_SERVER}/news/category?category=${
+        newsData.category ? newsData.category?.[0] : "india"
+      }&limit=4`
+    );
+    if (catData) {
+      setCatNewsData(catData.data);
     }
-  }
+  };
 
+  console.log(newsData)
 
-
-
-  return (
-    loader?<Loader />:<div className="content-wrapper ">
+  return loader ? (
+    <Loader />
+  ) : (
+    <div className="content-wrapper ">
       <div className="news-container">
         <div className="main-news-content">
           <h1 className="news-title">{newsData?.title}</h1>
           <h4 className="news-summary">{newsData?.summary}</h4>
 
           <div className="update-and-share">
-            <p><strong>last updated : </strong>{updatedAt?`${format(updatedAt, "d MMM, yyyy h:mm aaaa")}`:"N/A"}</p>
-            
+            <p>
+              <strong>last updated : </strong>
+              {updatedAt
+                ? `${format(updatedAt, "d MMM, yyyy h:mm aaaa")}`
+                : "N/A"}
+            </p>
+
             <div className="share-options">
               <p>
                 <strong>Share on</strong>
               </p>
-              <FacebookShareButton title={newsData.title} url={`${process.env.REACT_APP_FRONTEND_URL
-}/${newsData._id}`}>
+              <FacebookShareButton
+                title={newsData.title}
+                url={`${process.env.REACT_APP_FRONTEND_URL}/${newsData._id}`}
+              >
                 <FacebookIcon size={34} round={true}></FacebookIcon>
               </FacebookShareButton>
-              <WhatsappShareButton title={newsData.title} url={`${process.env.REACT_APP_FRONTEND_URL
-}/${newsData._id}`}>
+              <WhatsappShareButton
+                title={newsData.title}
+                url={`${process.env.REACT_APP_FRONTEND_URL}/${newsData._id}`}
+              >
                 <WhatsappIcon size={34} round={true}></WhatsappIcon>
               </WhatsappShareButton>
-              <TwitterShareButton title={newsData.title} url={`${process.env.REACT_APP_FRONTEND_URL
-}/${newsData._id}`}>
+              <TwitterShareButton
+                title={newsData.title}
+                url={`${process.env.REACT_APP_FRONTEND_URL}/${newsData._id}`}
+              >
                 <TwitterIcon size={34} round={true}></TwitterIcon>
               </TwitterShareButton>
-              <TelegramShareButton title={newsData.title} url={`${process.env.REACT_APP_FRONTEND_URL
-}/${newsData._id}`}>
+              <TelegramShareButton
+                title={newsData.title}
+                url={`${process.env.REACT_APP_FRONTEND_URL}/${newsData._id}`}
+              >
                 <TelegramIcon size={34} round={true}></TelegramIcon>
               </TelegramShareButton>
             </div>
           </div>
 
-          <img
-            className="newsImage"
-            src={`${process.env.REACT_APP_SERVER
-
-}/${newsData.image}`}
-            alt=""
-          />
+          <img className="newsImage" src={newsData.image ? newsData.image.url : "" } alt="" />
 
           <div
             className="news-content"
@@ -117,7 +124,9 @@ const NewsPage = () => {
 
           <p className="createdAt">
             <strong>Published On : </strong>
-            {createdAt?` ${format(createdAt, "d MMM, yyyy h:mm aaaa")}`:"N/A"}
+            {createdAt
+              ? ` ${format(createdAt, "d MMM, yyyy h:mm aaaa")}`
+              : "N/A"}
           </p>
 
           <div className="categories">
@@ -158,29 +167,31 @@ const NewsPage = () => {
           <div className="related-stories">
             <p>More Stories</p>
             <div className="related-stories-box">
-              {catNewsData.map((item,index)=>(
-                <div onClick={() => navigate(`/${item._id}`)} key={index} className="box">
-                <img
-                  className="related-img box-img"
-                  src={"http://localhost:4000/" + item.image}
-                  alt=""
-                ></img>
-                <div className="related-data">
-                  <div className="box-title">{item.title} </div>
-                  <div className="box-desc"> {item.summary}</div>
-                </div>
+              {catNewsData.map((item, index) => (
                 <div
-                  className="read-more related-readmore"
                   onClick={() => navigate(`/${item._id}`)}
+                  key={index}
+                  className="box"
                 >
-                  Read More
+                  <img
+                    className="related-img box-img"
+                    src={item.image.url}
+                    alt=""
+                  ></img>
+                  <div className="related-data">
+                    <div className="box-title">{item.title} </div>
+                    <div className="box-desc"> {item.summary}</div>
+                  </div>
+                  <div
+                    className="read-more related-readmore"
+                    onClick={() => navigate(`/${item._id}`)}
+                  >
+                    Read More
+                  </div>
                 </div>
-              </div>
               ))}
-              
             </div>
           </div>
-
         </div>
 
         <div className="right-news-content">
@@ -192,13 +203,7 @@ const NewsPage = () => {
                 onClick={() => navigate(`/${item._id}`)}
                 className="news-box"
               >
-                <img
-                  className="right-newsImage"
-                  src={`${process.env.REACT_APP_SERVER
-
-}/${item.image}`}
-                  alt=""
-                />
+                <img className="right-newsImage" src={item.image.url} alt="" />
                 <div className="news-data">
                   <p className="right-news-summary">{item.title}</p>
                 </div>

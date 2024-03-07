@@ -45,8 +45,7 @@ const LocalAllNews = () => {
         className="middle-card"
       >
         <p className="card-title">{item.title}</p>
-        <img src={`${process.env.REACT_APP_SERVER
-}/${item.image}`} alt="" className="card-image" />
+        <img src={item.image.url} alt="" className="card-image" />
         <p className="card-summary">{item.summary}</p>
         <div className="card-details">
           <div className="card-category">

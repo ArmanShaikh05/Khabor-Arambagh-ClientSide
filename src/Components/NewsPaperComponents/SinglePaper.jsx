@@ -46,7 +46,7 @@ const SinglePaper = () => {
         );
         if (response) {
           setNewsPaper(response.data);
-          setPdfFile(`${process.env.REACT_APP_SERVER}/${response.data.newspaper}`);
+          setPdfFile(`${response.data.newspaper.url}`);
         }
       } catch (error) {
         navigate('/error')

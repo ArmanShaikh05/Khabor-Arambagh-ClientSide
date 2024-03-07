@@ -44,7 +44,7 @@ const TechNews = () => {
             >
               <img
                 className="box-img"
-                src={`${process.env.REACT_APP_SERVER}/${item.image}`}
+                src={item.image.url}
                 alt=""
               ></img>
               <div className="box-title">{item.title} </div>

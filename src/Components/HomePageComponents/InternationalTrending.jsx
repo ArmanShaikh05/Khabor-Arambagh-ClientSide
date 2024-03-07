@@ -14,8 +14,7 @@ const InternationalTrending = () => {
   async function fetchNews(query) {
     try {
       const data = await axios.get(
-        `${process.env.REACT_APP_SERVER
-}/news?category=${query}&section=International News&limit=20`
+        `${process.env.REACT_APP_SERVER}/news?category=${query}&section=International News&limit=20`
       );
       setNewsArray(data.data);
     } catch (error) {
@@ -42,12 +41,7 @@ const InternationalTrending = () => {
               onClick={(e) => handleClick(e, item._id)}
               className="box"
             >
-              <img
-                className="box-img"
-                src={`${process.env.REACT_APP_SERVER
-}/${item.image}`}
-                alt=""
-              ></img>
+              <img className="box-img" src={item.image.url} alt=""></img>
               <div className="box-title">{item.title} </div>
               <div className="box-desc"> {item.summary}</div>
               <div className="read-more">Read More</div>

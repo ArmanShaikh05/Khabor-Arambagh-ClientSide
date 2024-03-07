@@ -157,7 +157,7 @@ const NationalPage = () => {
               >
                 <img
                   className="right-newsImage"
-                  src={`${process.env.REACT_APP_SERVER}/${item.image}`}
+                  src={item.image.url}
                   alt=""
                 />
                 <div className="news-data">
