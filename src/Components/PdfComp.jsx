@@ -8,6 +8,8 @@ function PdfComp({ pdfFile }) {
     setNumPages(numPages);
   }
 
+  console.log(pdfFile)
+
   // GETTING THE WIDTH OF THE WINDOW TO SET DYNAMICALLY THE SCALE OF  PDF VIEWER
   function useWindowSize() {
     const [width, setWidth] = useState([0]);
