@@ -5,8 +5,24 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css"
 const url = `//cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`
 pdfjs.GlobalWorkerOptions.workerSrc = url
 
-function PdfComp({ pdfFile }) {
+async function PdfComp({ pdfFile }) {
   const [numPages, setNumPages] = useState();
+
+const arrayBuffer = await fetch(pdfFile?pdfFile:"https://res.cloudinary.com/armanimages/image/upload/v1709882225/newspaper/n9fcibznwtv1dpnddowx.pdf");
+  const blob = await arrayBuffer.blob();
+  const pdfurl = await blobToURL(blob);
+
+  // utils
+function blobToURL(blob) {
+  return new Promise((resolve) => {
+     const reader = new FileReader();
+     reader.readAsDataURL(blob);
+     reader.onloadend = function () {
+        const base64data = reader.result;
+        resolve(base64data);
+     };
+  });
+}
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -33,7 +49,7 @@ function PdfComp({ pdfFile }) {
 
   return (
     <div className="pdf-container">
-      <Document file={{url:pdfFile?pdfFile:"https://res.cloudinary.com/armanimages/image/upload/v1709882225/newspaper/n9fcibznwtv1dpnddowx.pdf"}} onLoadSuccess={onDocumentLoadSuccess}>
+      <Document file={pdfurl} onLoadSuccess={onDocumentLoadSuccess}>
         {Array.apply(null, Array(numPages))
           .map((x, i) => i + 1)
           .map((page, index) => {
