@@ -29,7 +29,7 @@ function PdfComp({ pdfFile }) {
 
   return (
     <div className="pdf-container">
-      <Document file={pdfFile} onLoadSuccess={onDocumentLoadSuccess}>
+      <Document file={pdfFile ? pdfFile : ""} onLoadSuccess={onDocumentLoadSuccess}>
         {Array.apply(null, Array(numPages))
           .map((x, i) => i + 1)
           .map((page, index) => {
