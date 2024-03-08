@@ -2,7 +2,8 @@ import { useLayoutEffect, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css"
 
-pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js'
+const url = `//cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`
+pdfjs.GlobalWorkerOptions.workerSrc = url
 
 function PdfComp({ pdfFile }) {
   const [numPages, setNumPages] = useState();
