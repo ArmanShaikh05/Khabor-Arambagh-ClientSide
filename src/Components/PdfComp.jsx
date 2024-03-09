@@ -1,13 +1,10 @@
 import { useLayoutEffect, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-// import pdfjsWorker from "react-pdf/node_modules/pdfjs-dist/build/pdf.worker.entry";
-// import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry";
 
 
-// const url = `//cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-// pdfjs.GlobalWorkerOptions.workerSrc = url;
 
  const PdfComp = ({ pdfFile }) => {
   const [numPages, setNumPages] = useState();
@@ -37,7 +34,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
   return (
     <div className="pdf-container">
-      <Document file={{url:pdfFile?pdfFile:'https://res.cloudinary.com/armanimages/image/upload/v1709882225/newspaper/n9fcibznwtv1dpnddowx.pdf'}} onLoadSuccess={onDocumentLoadSuccess}>
+      <Document file={'https://res.cloudinary.com/armanimages/image/upload/v1709882225/newspaper/n9fcibznwtv1dpnddowx.pdf'} onLoadSuccess={onDocumentLoadSuccess}>
         {Array.apply(null, Array(numPages))
           .map((x, i) => i + 1)
           .map((page, index) => {
