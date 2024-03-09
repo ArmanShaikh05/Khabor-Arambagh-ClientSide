@@ -75,6 +75,7 @@ html{
   margin-inline: auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  padding: 0 2rem;
 }
 
 .logo{
@@ -83,7 +84,6 @@ html{
   width: 4.25rem;
   background: url(./Assets/logo.png);
   background-size: cover;
-  margin: 0 3rem;
 }
 
 
