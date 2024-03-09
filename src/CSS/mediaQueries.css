@@ -148,6 +148,14 @@
   .related-stories-box .box {
     width: 90vw;
   }
+
+  .right-news-content{
+    padding: 0;
+  }
+
+  .right-news-title{
+    margin: 2rem 0;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -256,10 +264,13 @@
     flex-direction: row;
     min-height: 6rem;
     align-items: center;
+    padding: 0.5rem;
   }
   .related-img {
-    height: 6rem;
-  }
+    height: 12vh;
+    width: 26vw;
+    border-radius: 5px;
+}
 
   .related-data {
     flex-direction: row;
@@ -337,10 +348,6 @@
 
   .card-image {
     width: 100%;
-  }
-
-  .connect-box {
-    font-size: 0.7rem;
   }
 
   .newspaper-section {
