@@ -65,8 +65,6 @@ const NewsPage = () => {
     }
   };
 
-  console.log(newsData)
-
   return loader ? (
     <Loader />
   ) : (

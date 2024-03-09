@@ -19,7 +19,6 @@ const WorldEducation = () => {
   const navigate = useNavigate();
   const [loader, setLoader] = useState(true);
 
-
   useEffect(() => {
     window.scrollTo(0, 0);
     // setLoader(true)
@@ -29,8 +28,9 @@ const WorldEducation = () => {
   }, []);
 
   const fetchLocalNews = async () => {
-    const localdata = await axios.get(`${process.env.REACT_APP_SERVER
-}/news?category=education`);
+    const localdata = await axios.get(
+      `${process.env.REACT_APP_SERVER}/news?category=education`
+    );
     if (localdata) {
       setLocalNews(localdata.data);
     }
@@ -46,8 +46,11 @@ const WorldEducation = () => {
         className="middle-card"
       >
         <p className="card-title">{item.title}</p>
-        <img src={`${process.env.REACT_APP_SERVER
-}/${item.image}`} alt="" className="card-image" />
+        <img
+          src={item.image.url}
+          alt=""
+          className="card-image"
+        />
         <p className="card-summary">{item.summary}</p>
         <div className="card-details">
           <div className="card-category">
@@ -62,20 +65,28 @@ const WorldEducation = () => {
             <p>
               <strong>Share on</strong>
             </p>
-            <FacebookShareButton title={item.title} url={`${process.env.REACT_APP_FRONTEND_URL
-}/${item._id}`}>
+            <FacebookShareButton
+              title={item.title}
+              url={`${process.env.REACT_APP_FRONTEND_URL}/${item._id}`}
+            >
               <FacebookIcon size={28} round={true}></FacebookIcon>
             </FacebookShareButton>
-            <WhatsappShareButton title={item.title} url={`${process.env.REACT_APP_FRONTEND_URL
-}/${item._id}`}>
+            <WhatsappShareButton
+              title={item.title}
+              url={`${process.env.REACT_APP_FRONTEND_URL}/${item._id}`}
+            >
               <WhatsappIcon size={28} round={true}></WhatsappIcon>
             </WhatsappShareButton>
-            <TwitterShareButton title={item.title} url={`${process.env.REACT_APP_FRONTEND_URL
-}/${item._id}`}>
+            <TwitterShareButton
+              title={item.title}
+              url={`${process.env.REACT_APP_FRONTEND_URL}/${item._id}`}
+            >
               <TwitterIcon size={28} round={true}></TwitterIcon>
             </TwitterShareButton>
-            <TelegramShareButton title={item.title} url={`${process.env.REACT_APP_FRONTEND_URL
-}/${item._id}`}>
+            <TelegramShareButton
+              title={item.title}
+              url={`${process.env.REACT_APP_FRONTEND_URL}/${item._id}`}
+            >
               <TelegramIcon size={28} round={true}></TelegramIcon>
             </TelegramShareButton>
           </div>

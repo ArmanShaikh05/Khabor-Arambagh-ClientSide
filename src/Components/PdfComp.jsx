@@ -1,34 +1,23 @@
 import { useLayoutEffect, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css"
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+// import pdfjsWorker from "react-pdf/node_modules/pdfjs-dist/build/pdf.worker.entry";
+// import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry";
 
-const url = `//cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`
-pdfjs.GlobalWorkerOptions.workerSrc = url
 
-async function PdfComp({ pdfFile }) {
+// const url = `//cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+// pdfjs.GlobalWorkerOptions.workerSrc = url;
+
+ const PdfComp = ({ pdfFile }) => {
   const [numPages, setNumPages] = useState();
 
-const arrayBuffer = await fetch(pdfFile?pdfFile:"https://res.cloudinary.com/armanimages/image/upload/v1709882225/newspaper/n9fcibznwtv1dpnddowx.pdf");
-  const blob = await arrayBuffer.blob();
-  const pdfurl = await blobToURL(blob);
-
-  // utils
-function blobToURL(blob) {
-  return new Promise((resolve) => {
-     const reader = new FileReader();
-     reader.readAsDataURL(blob);
-     reader.onloadend = function () {
-        const base64data = reader.result;
-        resolve(base64data);
-     };
-  });
-}
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
   }
 
-  console.log(pdfFile)
+  console.log(pdfFile);
 
   // GETTING THE WIDTH OF THE WINDOW TO SET DYNAMICALLY THE SCALE OF  PDF VIEWER
   function useWindowSize() {
@@ -37,19 +26,18 @@ function blobToURL(blob) {
       function updateSize() {
         setWidth([window.innerWidth]);
       }
-      window.addEventListener('resize', updateSize);
+      window.addEventListener("resize", updateSize);
       updateSize();
-      return () => window.removeEventListener('resize', updateSize);
+      return () => window.removeEventListener("resize", updateSize);
     }, []);
     return width;
   }
 
   const [width] = useWindowSize();
 
-
   return (
     <div className="pdf-container">
-      <Document file={pdfurl} onLoadSuccess={onDocumentLoadSuccess}>
+      <Document file={pdfFile?pdfFile:''} onLoadSuccess={onDocumentLoadSuccess}>
         {Array.apply(null, Array(numPages))
           .map((x, i) => i + 1)
           .map((page, index) => {
