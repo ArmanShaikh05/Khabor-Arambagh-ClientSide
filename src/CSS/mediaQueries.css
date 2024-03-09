@@ -236,6 +236,7 @@
 
   .newsImage {
     height: 20rem;
+    width: 28rem;
     margin: auto;
   }
 
@@ -399,7 +400,7 @@
   }
 
   .related-stories-box {
-    align-items: flex-start;
+    align-items: center;
     width: 85%;
     margin: 0;
   }
