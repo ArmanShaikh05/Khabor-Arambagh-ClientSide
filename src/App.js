@@ -44,7 +44,7 @@ function App() {
 
         {/* USING NESTED ROUTING */}
         <Route path="/localnews/" element={<LocalPage />}>
-          <Route path="" element={<LocalAllNews />} />
+          <Route index element={<LocalAllNews />} />
           <Route path="sports" element={<LocalSports />} />
           <Route path="gaming" element={<LocalGaming />} />
           <Route path="education" element={<LocalEducation />} />
@@ -55,7 +55,7 @@ function App() {
 
         {/* USING NESTED ROUTING */}
         <Route path="/nationalnews/" element={<NationalPage />}>
-          <Route path="" element={<NationalAllNews />} />
+          <Route index element={<NationalAllNews />} />
           <Route path="sports" element={<NationalSports />} />
           <Route path="gaming" element={<NationalGaming />} />
           <Route path="education" element={<NationalEducation />} />
@@ -64,8 +64,8 @@ function App() {
         </Route>
 
         {/* USING NESTED ROUTING */}
-        <Route path="/worldnews" element={<WorldNewsPage />}>
-          <Route path="" element={<WorldAllNews />} />
+        <Route path="/worldnews/" element={<WorldNewsPage />}>
+          <Route index element={<WorldAllNews />} />
           <Route path="sports" element={<WorldSports />} />
           <Route path="gaming" element={<WorldGaming />} />
           <Route path="education" element={<WorldEducation />} />
