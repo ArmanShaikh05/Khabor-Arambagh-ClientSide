@@ -97,6 +97,12 @@ html{
   cursor: pointer;
 }
 
+.home-Icon{
+  height: 1.5rem;
+  width: 1.5rem;
+  display: none;
+}
+
 
 .hamburger{
   display: flex;
@@ -741,7 +747,7 @@ html{
 .newsImage{
   height: 30rem;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 5px;
   margin-bottom: 1rem;
 }
@@ -830,6 +836,23 @@ html{
 
 .related-stories-box .box-title{
   margin-bottom: 0.5rem;
+}
+
+.more-stories-title{
+  position: relative;
+  padding-left: 0.7rem;
+  font-weight: 600;
+  margin: 1.5rem 0;
+}
+
+.more-stories-title::before{
+  content: "";
+  height: 100%;
+  width: 0.5rem;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* DESIGNING THE RIGHT SIDE AREA OF NEWS PAGE */

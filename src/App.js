@@ -29,8 +29,8 @@ import WorldGaming from "./Components/WorldNewsComponent/WorldGaming";
 import WorldEducation from "./Components/WorldNewsComponent/WorldEducation";
 import WorldTech from "./Components/WorldNewsComponent/WorldTech";
 import WorldEntertainment from "./Components/WorldNewsComponent/WorldEntertainment";
-import NewsPaper from "./Pages/NewsPaper";
-import SinglePaper from "./Components/NewsPaperComponents/SinglePaper";
+// import NewsPaper from "./Pages/NewsPaper";
+// import SinglePaper from "./Components/NewsPaperComponents/SinglePaper";
 import SearchNews from "./Components/SearchNews";
 
 function App() {
@@ -73,9 +73,9 @@ function App() {
           <Route path="entertainment" element={<WorldEntertainment />} />
         </Route>
 
-        <Route path="/newspaper" element={<NewsPaper />}></Route>
+        {/* <Route path="/newspaper" element={<NewsPaper />}></Route>
 
-        <Route path="/newspaper/:id" element={<SinglePaper />}></Route>
+        <Route path="/newspaper/:id" element={<SinglePaper />}></Route> */}
 
         <Route path="/search" element={<SearchNews />}></Route>
 

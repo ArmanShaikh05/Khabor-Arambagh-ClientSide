@@ -163,7 +163,7 @@ const NewsPage = () => {
           </div>
 
           <div className="related-stories">
-            <p>More Stories</p>
+            <p className="more-stories-title">More Stories</p>
             <div className="related-stories-box">
               {catNewsData.map((item, index) => (
                 <div
