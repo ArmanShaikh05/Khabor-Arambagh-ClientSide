@@ -37,7 +37,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
   return (
     <div className="pdf-container">
-      <Document file={pdfFile?pdfFile:'https://res.cloudinary.com/armanimages/image/upload/v1709882225/newspaper/n9fcibznwtv1dpnddowx.pdf'} onLoadSuccess={onDocumentLoadSuccess}>
+      <Document file={{url:pdfFile?pdfFile:'https://res.cloudinary.com/armanimages/image/upload/v1709882225/newspaper/n9fcibznwtv1dpnddowx.pdf'}} onLoadSuccess={onDocumentLoadSuccess}>
         {Array.apply(null, Array(numPages))
           .map((x, i) => i + 1)
           .map((page, index) => {
