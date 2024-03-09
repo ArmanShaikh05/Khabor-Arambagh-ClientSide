@@ -4,7 +4,8 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
 
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js@3.11.174/pdf.worker.min.js`;
+// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js@3.11.174/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `'//cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.js'`;
 
 // pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 //   'pdfjs-dist/build/pdf.worker.min.js',
