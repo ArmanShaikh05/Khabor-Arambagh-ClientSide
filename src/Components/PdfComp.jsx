@@ -39,7 +39,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
   return (
     <div className="pdf-container">
-      <Document file="https://res.cloudinary.com/armanimages/image/upload/v1709882225/newspaper/n9fcibznwtv1dpnddowx.pdf" onLoadSuccess={onDocumentLoadSuccess} onLoadError={	(error) => alert('Error while loading document! ' + error.message)}>
+      <Document file="https://res.cloudinary.com/armanimages/image/upload/v1709882225/newspaper/n9fcibznwtv1dpnddowx.pdf" onLoadSuccess={onDocumentLoadSuccess} onLoadError={	(error) => console.log(error.message)}>
         {Array.apply(null, Array(numPages))
           .map((x, i) => i + 1)
           .map((page, index) => {
