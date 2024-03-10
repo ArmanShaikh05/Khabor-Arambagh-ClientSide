@@ -105,7 +105,8 @@ const SinglePaper = () => {
                 header: {
                   disableHeader: true,
                   disableFileName: true,
-                }
+                },
+                pdfVerticalScrollByDefault: true,
               }}
             />
 
