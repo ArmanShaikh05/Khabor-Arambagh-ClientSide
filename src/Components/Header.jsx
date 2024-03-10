@@ -88,7 +88,7 @@ const Header = () => {
             >
               World News
             </li>
-            {/* <li className="navitems navbarItems" onClick={(e) => {navigate("/newspaper"); handleNavbarClick(e)}}>Newspaper</li> */}
+            <li className="navitems navbarItems" onClick={(e) => {navigate("/newspaper"); handleNavbarClick(e)}}>Newspaper</li>
             <li>
               <i
                 onClick={(e) => {

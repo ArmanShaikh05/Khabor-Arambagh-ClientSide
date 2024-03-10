@@ -9,6 +9,7 @@ const InternationalTrending = () => {
 
   useEffect(() => {
     fetchNews("World");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function fetchNews(query) {

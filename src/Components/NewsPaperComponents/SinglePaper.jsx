@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 
 import axios from "axios";
 import { useEffect } from "react";
@@ -16,21 +17,14 @@ import {
 import { format } from "date-fns";
 import { useState } from "react";
 import Loader from "../Loader";
-import { pdfjs } from "react-pdf";
-import PdfComp from "../PdfComp";
-import toast from "react-hot-toast"
-
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.js",
-  import.meta.url
-).toString();
+import toast from "react-hot-toast";
 
 const SinglePaper = () => {
   const { id } = useParams();
   const [newspaper, setNewsPaper] = useState([]);
   const [loader, setLoader] = useState(true);
   const [pdfFile, setPdfFile] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,19 +34,21 @@ const SinglePaper = () => {
   }, [id]);
 
   const fetchNewspaper = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_SERVER}/newspaper/${id}`
-        );
-        if (response) {
-          setNewsPaper(response.data);
-          setPdfFile(`${response.data.newspaper.url}`);
-        }
-      } catch (error) {
-        navigate('/error')
-        toast.error(error.message)
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER}/newspaper/${id}`
+      );
+      if (response) {
+        setNewsPaper(response.data);
+        setPdfFile(`${response.data.newspaper.url}`);
       }
+    } catch (error) {
+      navigate("/error");
+      toast.error(error.message);
+    }
   };
+
+  const docs = [{ uri: pdfFile, fileName: newspaper.title }];
 
   return loader ? (
     <Loader />
@@ -102,7 +98,18 @@ const SinglePaper = () => {
           </div>
 
           <div className="pdf-section">
-            <PdfComp pdfFile={pdfFile} />
+            <DocViewer
+              documents={docs}
+              pluginRenderers={DocViewerRenderers}
+              config={{
+                header: {
+                  disableHeader: true,
+                  disableFileName: true,
+                }
+              }}
+            />
+
+            {/* <iframe src={pdfFile}  title="viewer"></iframe> */}
           </div>
         </div>
       </div>

@@ -203,6 +203,17 @@
   .secondary-conatiner .right-section {
     display: none;
   }
+
+  .errorPage-container{
+    width: 90vw;
+    height: 100vh;
+  }
+
+  .errorImage{
+    width: 80%;
+    height: 40%;
+    /* aspect-ratio: 1 / 1; */
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -230,12 +241,11 @@
     min-height: 100vh;
   }
 
-  .errorPage-container {
-    width: 49rem;
-  }
-
   .footer-copyright {
     font-size: 0.8rem;
+    width: 100vw;
+    height: 10vh;
+    text-align: center;
   }
 
   .weather-img {

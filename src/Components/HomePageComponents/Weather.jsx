@@ -4,7 +4,6 @@ import {useNavigate} from "react-router-dom"
 import {toast} from "react-hot-toast"
 
 const Weather = () => {
-  const API = "038f9ce323ec4cd9a7375638233112";
   const BASE_URL = "https://api.weatherapi.com/v1";
 
   const navigate = useNavigate()
@@ -29,7 +28,7 @@ const Weather = () => {
     function getLocationCurrent(longitude, latitude) {
       Area_Name = `${latitude},${longitude}`;
 
-      const url = `${BASE_URL}/forecast.json?key=${API}&q=${Area_Name}&days=3&aqi=no&alerts=no`;
+      const url = `${BASE_URL}/forecast.json?key=${process.env.REACT_APP_WEATHER_API}&q=${Area_Name}&days=3&aqi=no&alerts=no`;
 
       fetchApi(url);
       

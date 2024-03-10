@@ -10,6 +10,7 @@ const TrendingNews = () => {
 
   useEffect(() => {
     fetchNews("India");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function fetchNews(query) {

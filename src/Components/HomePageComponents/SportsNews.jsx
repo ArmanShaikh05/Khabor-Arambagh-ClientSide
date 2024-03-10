@@ -10,6 +10,7 @@ const SportsNews = () => {
 
   useEffect(() => {
     fetchNews("Sports");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function fetchNews(query) {
