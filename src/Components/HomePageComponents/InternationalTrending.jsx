@@ -14,7 +14,7 @@ const InternationalTrending = () => {
   async function fetchNews(query) {
     try {
       const data = await axios.get(
-        `${process.env.REACT_APP_SERVER}/news?category=${query}&section=International News&limit=20`
+        `${process.env.REACT_APP_SERVER}/news?category=${query}&limit=20`
       );
       setNewsArray(data.data);
     } catch (error) {
