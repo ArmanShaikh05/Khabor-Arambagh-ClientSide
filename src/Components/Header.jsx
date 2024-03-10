@@ -170,11 +170,11 @@ const Header = () => {
             >
               World News
             </li>
-            {/* <li className="navitems sidebar-navItems" onClick={(e) => {
+            <li className="navitems sidebar-navItems" onClick={(e) => {
                 navigate("/newspaper");
                 setOpenSidebar(false);
                 handleSidebarNavitemClick(e);
-              }}>Newspaper</li> */}
+              }}>Newspaper</li>
           </ul>
         </div>
       </nav>
