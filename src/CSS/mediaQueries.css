@@ -156,6 +156,11 @@
   .right-news-title{
     margin: 2rem 0;
   }
+
+  .news-content{
+    width: 95vw;
+    padding: 0 0.3rem;
+  }
 }
 
 @media screen and (max-width: 800px) {

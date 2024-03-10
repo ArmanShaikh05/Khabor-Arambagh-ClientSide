@@ -17,38 +17,32 @@ const Footer = () => {
         <div className="footer-box box2">
           <ul className="footer-list">
             <li className="footer-list-item">
-              <a href="/">Item1</a>
+              <a href="/">Privacy Policy</a>
             </li>
             <li className="footer-list-item">
-              <a href="/">Item1</a>
+              <a href="/">Accessiblity Help</a>
             </li>
             <li className="footer-list-item">
-              <a href="/">Item1</a>
+              <a href="/">Feedback</a>
             </li>
             <li className="footer-list-item">
-              <a href="/">Item1</a>
-            </li>
-            <li className="footer-list-item">
-              <a href="/">Item1</a>
+              <a href="/">Advertise with us</a>
             </li>
           </ul>
         </div>
         <div className="footer-box box3">
           <ul className="footer-list">
             <li className="footer-list-item">
-              <a href="/">Item1</a>
+              <a href="/">About Us</a>
             </li>
             <li className="footer-list-item">
-              <a href="/">Item1</a>
+              <a href="/">Terms of Use</a>
             </li>
             <li className="footer-list-item">
-              <a href="/">Item1</a>
+              <a href="/">Disclaimer</a>
             </li>
             <li className="footer-list-item">
-              <a href="/">Item1</a>
-            </li>
-            <li className="footer-list-item">
-              <a href="/">Item1</a>
+              <a href="/">Partner Content</a>
             </li>
           </ul>
         </div>
@@ -60,7 +54,7 @@ const Footer = () => {
             className="footer-social"
           >
             <i className="fa-brands fa-instagram" />
-            khoborarambagh5034
+            khaborarambagh5034
           </a>
           <a
             href="https://www.facebook.com/khaborarmbagh?mibextid=hIlR13"
@@ -69,7 +63,7 @@ const Footer = () => {
             className="footer-social"
           >
             <i className="fa-brands fa-facebook" />
-            Khobor Arambagh
+            Khabor Arambagh
           </a>
           <a
             href="https://youtube.com/@khaborarambagh5034?si=G2HJOHLdb10rnqTd"
@@ -78,7 +72,7 @@ const Footer = () => {
             className="footer-social"
           >
             <i className="fa-brands fa-youtube" />
-            Khobor Arambagh
+            Khabor Arambagh
           </a>
           <a
             href="https://wa.me/message/LWTRN55WDQ2LF1"
@@ -87,11 +81,11 @@ const Footer = () => {
             className="footer-social"
           >
             <i className="fa-brands fa-whatsapp" />
-            Khobor Arambagh
+            Khabor Arambagh
           </a>
           <a href="/" className="footer-social">
             <i className="fa-solid fa-envelope" />
-            khoborarambagh2020@gmail.com
+            khaborarambagh2020@gmail.com
           </a>
         </div>
       </div>
