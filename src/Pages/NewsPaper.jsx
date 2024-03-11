@@ -9,6 +9,7 @@ const NewsPaper = () => {
   const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchNewspapers();
     setLoader(false);
   }, [reducerValue, loader]);

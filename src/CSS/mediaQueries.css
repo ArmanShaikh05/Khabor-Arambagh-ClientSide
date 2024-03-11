@@ -161,22 +161,6 @@
     width: 95vw;
     padding: 0 0.3rem;
   }
-}
-
-@media screen and (max-width: 800px) {
-  .date-weather-box {
-    flex-direction: column-reverse;
-    max-height: max-content;
-  }
-
-  .weather-box {
-    width: 100%;
-  }
-
-  .weather-sections {
-    gap: 0;
-    justify-content: space-between;
-  }
 
   .footer {
     display: flex;
@@ -192,12 +176,33 @@
     flex-direction: column;
     align-items: center;
     border: none;
+    text-align: center;
     border-top: 2px solid var(--background-light-variant);
     width: 90%;
   }
 
   .footer-copyright {
     padding-left: 0.5rem;
+  }
+
+  .weather-box{
+    margin: 1.8rem 0 0 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .date-weather-box {
+    flex-direction: column-reverse;
+    max-height: max-content;
+  }
+
+  .weather-box {
+    width: 100%;
+  }
+
+  .weather-sections {
+    gap: 0;
+    justify-content: space-between;
   }
 
   .secondary-conatiner {

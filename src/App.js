@@ -32,6 +32,12 @@ import WorldEntertainment from "./Components/WorldNewsComponent/WorldEntertainme
 import NewsPaper from "./Pages/NewsPaper";
 import SinglePaper from "./Components/NewsPaperComponents/SinglePaper";
 import SearchNews from "./Components/SearchNews";
+import PrivacyPolicy from "./Components/FooterComponents/PrivacyPolicy";
+import AboutUs from "./Components/FooterComponents/AboutUs";
+import TermsOfUse from "./Components/FooterComponents/TermsOfUse";
+import Advertise from "./Components/FooterComponents/Advertise";
+import ParentialGuidance from "./Components/FooterComponents/ParentialGuidance";
+import AccessiblityHelp from "./Components/FooterComponents/AccessiblityHelp";
 
 function App() {
   return (
@@ -41,6 +47,10 @@ function App() {
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/:id" element={<NewsPage />}></Route>
         <Route path="/error" element={<ErrorPage />}></Route>
+        <Route
+          path="*"
+          element={<ErrorPage message={"ERROR 404 PAGE NOT FOUND"} />}
+        />
 
         {/* USING NESTED ROUTING */}
         <Route path="/localnews/" element={<LocalPage />}>
@@ -79,6 +89,14 @@ function App() {
 
         <Route path="/search" element={<SearchNews />}></Route>
 
+
+        {/* FOOTER ROUTES */}
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/terms" element={<TermsOfUse />} />
+        <Route path="/advertise" element={<Advertise />} />
+        <Route path="/guidance" element={<ParentialGuidance />} />
+        <Route path="/accessibility" element={<AccessiblityHelp />} />
       </Routes>
 
       <Toaster />

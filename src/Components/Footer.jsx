@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -9,40 +10,34 @@ const Footer = () => {
             Explore <span>KhaborArambagh</span>
           </div>
           <p className="footer-address">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit sed quos est excepturi, ab voluptates dicta sequi
-            eveniet dolor quas.
+            Welcome to Khaborarambagh, your reliable source for breaking news,
+            insightful analysis, and thought-provoking stories from around the
+            globe.
           </p>
         </div>
         <div className="footer-box box2">
           <ul className="footer-list">
             <li className="footer-list-item">
-              <a href="/">Privacy Policy</a>
+              <Link to="/privacy">Privacy Policy</Link>
             </li>
             <li className="footer-list-item">
-              <a href="/">Accessiblity Help</a>
+              <Link to="/accessibility">Accessiblity Help</Link>
             </li>
             <li className="footer-list-item">
-              <a href="/">Feedback</a>
-            </li>
-            <li className="footer-list-item">
-              <a href="/">Advertise with us</a>
+              <Link to="/advertise">Advertise with us</Link>
             </li>
           </ul>
         </div>
         <div className="footer-box box3">
           <ul className="footer-list">
             <li className="footer-list-item">
-              <a href="/">About Us</a>
+              <Link to="/aboutus">About Us</Link>
             </li>
             <li className="footer-list-item">
-              <a href="/">Terms of Use</a>
+              <Link to="/terms">Terms of Use</Link>
             </li>
             <li className="footer-list-item">
-              <a href="/">Disclaimer</a>
-            </li>
-            <li className="footer-list-item">
-              <a href="/">Partner Content</a>
+              <Link to="/guidance">Parential Guidance</Link>
             </li>
           </ul>
         </div>
