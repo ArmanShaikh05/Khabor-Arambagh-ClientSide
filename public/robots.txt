@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /privacy
+Disallow: /accessibility
+Disallow: /advertise
+Disallow: /aboutus
+Disallow: /terms
+Disallow: /guidance
+Disallow: /search

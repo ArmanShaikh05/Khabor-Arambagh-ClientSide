@@ -4,9 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const YoutubeVideo = () => {
-  const API_KEY = "AIzaSyA0VpDJ4Ru6ghjY7jLzaGUPswOhtH0gDn4";
-  const PLAYLIST_ID = "PLhrvdvdtQ11ncmofechaxN-2ZRUPaEZeg";
-  // const [loader, setLoader] = useState(true);
+
   const [videosData, setVideosData] = useState([]);
   const navigate = useNavigate();
 
@@ -19,7 +17,7 @@ const YoutubeVideo = () => {
   const fetchVideos = async () => {
     try {
       const videos = await axios.get(
-        `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=4&playlistId=${PLAYLIST_ID}&key=${API_KEY}`
+        `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=4&playlistId=${process.env.REACT_APP_YOUTUBE_PLAYLIST_ID}&key=${process.env.REACT_APP_YOUTUBE_API}`
       );
       setVideosData(videos.data.items);
     } catch (error) {
