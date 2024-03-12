@@ -8,7 +8,7 @@ const MoviesNews = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchNews("Movies");
+    fetchNews("Entertain");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -35,24 +35,18 @@ const MoviesNews = () => {
         Film and Music Industry
       </div>
       <div className="news-boxes-2 custom-scroolbar" id="news-boxes-2">
-        {newsArray?.map((item, index) =>
-          item.image ? (
-            <div
-              key={index}
-              onClick={(e) => handleClick(e, item._id)}
-              className="box"
-            >
-              <img
-                className="box-img"
-                src={item.image.url}
-                alt=""
-              ></img>
-              <div className="box-title">{item.title} </div>
-              <div className="box-desc"> {item.summary}</div>
-              <div className="read-more">Read More</div>
-            </div>
-          ) : null
-        )}
+        {newsArray?.map((item, index) => (
+          <div
+            key={index}
+            onClick={(e) => handleClick(e, item._id)}
+            className="box"
+          >
+            <img className="box-img" src={item.image.url} alt=""></img>
+            <div className="box-title">{item.title} </div>
+            <div className="box-desc"> {item.summary}</div>
+            <div className="read-more">Read More</div>
+          </div>
+        ))}
       </div>
     </div>
   );

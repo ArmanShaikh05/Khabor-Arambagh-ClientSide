@@ -160,6 +160,11 @@
   .news-content{
     width: 95vw;
     padding: 0 0.3rem;
+    font-size: 1.3rem;
+  }
+
+  .news-summary,.news-title,.update-and-share,.connect-with-us,.createdAt,.categories{
+    width: 95vw;
   }
 
   .footer {
@@ -401,10 +406,6 @@
   .related-img {
     height: 5rem;
     width: 14.5rem;
-  }
-
-  .connect-with-us {
-    width: 100vw;
   }
 
   .right-news-title {

@@ -63,7 +63,7 @@ const AccessiblityHelp = () => {
         <p>
           We welcome feedback and suggestions on how we can improve the
           accessibility of our website. If you have any ideas or
-          recommendations, please email us at accessibility@khaborarambagh.com.
+          recommendations, please email us at khaborarambagh2020@gmail.com.
         </p>
         <br />
         <h2 id="5-contact-us-">5. Contact Us:</h2>

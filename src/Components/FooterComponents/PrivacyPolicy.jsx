@@ -10,8 +10,7 @@ const PrivacyPolicy = () => {
       <h1 className="news-title">Privacy Policy</h1>
       <div className="footer-link-data">
         <h2 id="privacy-policy-for-khaborarambagh-news-website">
-          Privacy Policy for Khaborarambagh News Website
-        </h2>
+          Privacy Policy for Khaborarambagh </h2>
         <br />
         <p>
           At Khaborarambagh, we are committed to safeguarding your privacy while

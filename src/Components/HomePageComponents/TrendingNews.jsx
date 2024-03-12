@@ -16,7 +16,7 @@ const TrendingNews = () => {
   async function fetchNews(query) {
     try {
       const data = await axios.get(
-        `${process.env.REACT_APP_SERVER}/news?category=${query}&section=Local News&limit=20`
+        `${process.env.REACT_APP_SERVER}/news?category=${query}&limit=20`
       );
       setNewsArray(data.data);
     } catch (error) {
@@ -36,20 +36,18 @@ const TrendingNews = () => {
         Trending in India
       </div>
       <div className="news-boxes-2 custom-scroolbar" id="news-boxes-2">
-        {newsArray?.map((item, index) =>
-          item.image ? (
-            <div
-              key={index}
-              onClick={(e) => handleClick(e, item._id)}
-              className="box"
-            >
-              <img className="box-img" src={item.image.url} alt=""></img>
-              <div className="box-title">{item.title} </div>
-              <div className="box-desc"> {item.summary}</div>
-              <div className="read-more">Read More</div>
-            </div>
-          ) : null
-        )}
+        {newsArray?.map((item, index) => (
+          <div
+            key={index}
+            onClick={(e) => handleClick(e, item._id)}
+            className="box"
+          >
+            <img className="box-img" src={item.image.url} alt=""></img>
+            <div className="box-title">{item.title} </div>
+            <div className="box-desc"> {item.summary}</div>
+            <div className="read-more">Read More</div>
+          </div>
+        ))}
       </div>
     </div>
   );
