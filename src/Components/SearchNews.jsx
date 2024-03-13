@@ -8,6 +8,7 @@ const SearchNews = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const [newsArray, setNewsArray] = useState([]);
+  const [noResult, setNoResult] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -19,7 +20,12 @@ const SearchNews = () => {
         `${process.env.REACT_APP_SERVER}/news?search=${search}`
       );
       if (data) {
-        setNewsArray(data.data);
+        if (data.data.length === 0) {
+          setNoResult(true);
+        } else {
+          setNoResult(false);
+          setNewsArray(data.data);
+        }
       } else {
         navigate("/error");
       }
@@ -60,7 +66,7 @@ const SearchNews = () => {
       </form>
 
       <div className="search-result-box">
-        {newsArray?.map((item, index) =>
+        {!noResult ? newsArray?.map((item, index) =>
           item.image ? (
             <div
               key={index}
@@ -77,7 +83,7 @@ const SearchNews = () => {
               <div className="read-more">Read More</div>
             </div>
           ) : null
-        )}
+        ):(<h3>No News Found</h3>)}
       </div>
     </div>
   );
